@@ -1,12 +1,9 @@
 // This script will create a category named "PROGRESS TRACKING 🔥"
-// with 30 channels named day-1, day-2, etc.
-// AND send a message with the actual date to each channel
 import { config } from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 
 config();
 
-// Create an array of 30 day channels
 const daystreakChannels = Array.from({ length: 30 }, (_, i) => `day-${i + 1}`);
 
 const client = new Client({
@@ -20,7 +17,6 @@ const BOT_TOKEN = ''
 const GUILD_ID = ''  
 const DELAY_MS = 1500;
 
-// Generate date strings for each day
 function generateDates(numberOfDays = 30) {
   const dates = [];
   const today = new Date();
@@ -29,7 +25,6 @@ function generateDates(numberOfDays = 30) {
     const date = new Date(today);
     date.setDate(today.getDate() + i);
     
-    // Format the date as a readable string (e.g., "February 25, 2025")
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const dateString = date.toLocaleDateString('en-US', options);
     
@@ -64,7 +59,6 @@ async function createMultipleChannels(guild, channelNames, categoryId = null, vo
       const channel = await guild.channels.create(channelOptions);
       console.log(`Created ${voice ? 'voice' : 'text'} channel: ${name} (ID: ${channel.id})`);
       
-      // Send a message with the date to the new channel
       try {
         await new Promise(resolve => setTimeout(resolve, 500)); // Short delay before sending message
         await channel.send(`📅 **This is the channel for: ${dateForChannel}**\nTrack your progress for this day here!`);
@@ -146,8 +140,6 @@ client.once('ready', async () => {
   }
 });
 
-// Error handling
 client.on('error', console.error);
 
-// Login to Discord
 client.login(BOT_TOKEN).catch(console.error);
