@@ -12,7 +12,7 @@ const client = new Client({
 });
 
 
-const BOT_TOKEN = 'MTM0Mzk5MjEyMTIxNTk0NjkwNA.GAz8jJ._zPDZMtAaklLGJXCB0u7wzV_n_LoWAoBZkHsoI'
+const BOT_TOKEN = ''
 const GUILD_ID = '1339872110712983562'  
 const CATEGORY_NAME = 'PROGRESS TRACKING 🔥'; 
 const DELAY_MS = 1000;                 
